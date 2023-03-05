@@ -13,24 +13,26 @@
       margin: 0;
     }
     #webchat {
-      height: 100%;
-      width: 100%;
+      height: 70%;
+      width: 70%;
     }
   </style>
 </head>
 
 <body>
+<h1>Welcome to CAPRIO User Study</h1>
 <div id="webchat" role="main"></div>
+
 <script>
   (async function() {
     const fetchCredentials = async () => {
-      const res = await fetch('https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken', {
+      const res = await fetch('https://eastus.api.cognitive.microsoft.com/sts/v1.0/issuetoken', {
         method: 'POST',
-        headers:{'Ocp-Apim-Subscription-Key': '9f7934bc886a4a3e879f557197de386a'}
+        headers:{'Ocp-Apim-Subscription-Key': 'c82a7bc93f2f4d6f97ac65791d7ed7ec'}
       });
 
       if (res.status === 200) {
-        return {region : 'westus' ,authorizationToken : await res.text() };
+        return {region : 'eastus' ,authorizationToken : await res.text() };
       } else {
         return (new Error('error!'))
       }
@@ -52,3 +54,4 @@
 </script>
 </body>
 </html>
+
